@@ -30,7 +30,10 @@ test -f $ssh_dir/authorized_keys || touch $ssh_dir/authorized_keys
 echo "Adding SSH keys to $ssh_dir/authorized_keys..."
 
 echo "$SSH_KEYS" | while read key ; do 
-    ssh-keygen -lf /dev/stdin <<< $key
+    keyfile="$(tempfile)"
+    echo "$key" >> "$keyfile"
+    ssh-keygen -lf "$keyfile"
+    rm "$keyfile"
     echo "$key" >> "$ssh_dir/authorized_keys"
 done
 
