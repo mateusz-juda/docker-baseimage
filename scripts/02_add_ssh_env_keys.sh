@@ -5,6 +5,11 @@ set -e
 # load environment variables
 source /etc/container_environment.sh
 
+if [ -z "$SSH_KEYS" ]; then
+    # there are no environment keys to add, just get outta here
+    exit 0
+fi
+
 if [ ! -z "$SSH_USER" ] ; then
     ssh_dir="/home/$SSH_USER/.ssh"
     
@@ -27,8 +32,6 @@ test -f $ssh_dir/authorized_keys || touch $ssh_dir/authorized_keys
 : > $ssh_dir/authorized_keys
 
 # add the keys
-echo "Adding SSH keys to $ssh_dir/authorized_keys..."
-
 echo "$SSH_KEYS" | while read key ; do 
     keyfile="$(tempfile)"
     echo "$key" >> "$keyfile"
