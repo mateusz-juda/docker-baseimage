@@ -35,6 +35,7 @@ then be able to quickly and easily SSH into the Docker instance using your key.
 #### Supported Environment Variables
 
 | Name | Required | Description |
+|------|----------|-------------|
 | `SSH_KEYS` | No | A newline-delimited list of SSH keys in the `authorized_keys` file format. |
 | `SSH_USER` | No (Defaults to `root`) | The user to set the SSH keys for, generally `root`. |
 
