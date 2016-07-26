@@ -1,5 +1,6 @@
-FROM phusion/baseimage:0.9.12
-MAINTAINER Naftuli Tzvi Kay <rfkrocktk@gmail.com>
+FROM phusion/baseimage:0.9.19
+MAINTAINER Mateusz Juda <mateusz.juda@{gmail.com,ii.uj.edu.pl}>
+# Based on rfkrocktk/baseimage
 
 ENV LANG en_US.UTF-8
 RUN locale-gen en_US.UTF-8
